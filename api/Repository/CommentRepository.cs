@@ -12,6 +12,7 @@ public class CommentRepository : ICommentRepository
     {
         _context = context;
     }
+
     public async Task<List<Comment>> GetAllCommentsAsync()
     {
         return await _context.Comments.ToListAsync();
@@ -20,5 +21,13 @@ public class CommentRepository : ICommentRepository
     public Task<Comment?> GetByIdAsync(int id)
     {
         return _context.Comments.FirstOrDefaultAsync(c => c.Id == id);
+    }
+
+    public async Task<Comment> CreateAsync(Comment comment)
+    {
+        await _context.Comments.AddAsync(comment);
+        await _context.SaveChangesAsync();
+        
+        return comment;
     }
 }
