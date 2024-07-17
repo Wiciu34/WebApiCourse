@@ -34,7 +34,7 @@ public class CommentController :ControllerBase
 
         if(comment == null)
         {
-            return NotFound();
+            return NotFound("Comment was not found");
         }
 
         return Ok(comment.ToCommentDto());
@@ -63,11 +63,23 @@ public class CommentController :ControllerBase
 
         if(comment == null)
         {
-            return NotFound();
+            return NotFound("Comment was not found");
         }
 
         return Ok(comment.ToCommentDto());
     } 
 
+    [HttpDelete]
+    [Route("{id}")]
+    public async Task<IActionResult> Delete([FromRoute] int id)
+    {
+        var comment = await _commentRepository.DeleteAsync(id);
 
+        if(comment == null)
+        {
+            return NotFound("Comment was not found");
+        }
+
+        return NoContent();
+    }
 }
