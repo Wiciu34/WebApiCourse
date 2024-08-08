@@ -1,8 +1,10 @@
 using api.Dtos.Comment;
 using api.Extensions;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
 using api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,9 +27,10 @@ public class CommentController :ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    [Authorize]
+    public async Task<IActionResult> GetAll([FromQuery] CommentQueryObject queryObject)
     {
-        var comments = await _commentRepository.GetAllCommentsAsync();
+        var comments = await _commentRepository.GetAllCommentsAsync(queryObject);
 
         var commentsDto = comments.Select(c => c.ToCommentDto());
 
