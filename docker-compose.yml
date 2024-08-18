@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: finshark-app
+    build: .
+    ports:
+      - 5000:8080
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=finshark-db; Database=finshark; User Id=sa; Password=P@ssw0rd1234; TrustServerCertificate=True"
+      ASPNETCORE_ENVIRONMENT: Development
+    networks:
+      - finshark-network
+    depends_on:
+      - database  
+
+  database:
+    container_name: finshark-db
+    image: finsharkdb
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssw0rd1234
+    volumes:
+      - finshark-volume:/var/opt/mssql
+    networks:
+      - finshark-network
+
+volumes:
+  finshark-volume:
+
+networks:
+  finshark-network:
+    driver: bridge
