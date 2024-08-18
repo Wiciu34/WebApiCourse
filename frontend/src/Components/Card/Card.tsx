@@ -1,3 +1,4 @@
+import React from "react";
 import "./Card.css"
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
     price: number;
 }
 
-const Card = ({companyName, tricker, price}: Props) => {
+const Card: React.FC<Props>  = ({companyName, tricker, price}) : JSX.Element => {
   return (
      <div className="card">
         <img src="https://pobierak.jeja.pl/images/4/a/5/181296_to-uczucie-kiedy-twoje-obrazki-i.jpg" alt='Image' />
