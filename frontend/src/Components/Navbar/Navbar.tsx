@@ -1,6 +1,4 @@
-import React from "react";
 import logo from "./logo.png";
-import "./Navbar.css";
 
 interface Props {}
 

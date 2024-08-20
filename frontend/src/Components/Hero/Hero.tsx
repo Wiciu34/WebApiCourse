@@ -1,6 +1,4 @@
-import React from "react";
 import hero from "./hero.png";
-import "./Hero.css";
 
 interface Props {}
 
