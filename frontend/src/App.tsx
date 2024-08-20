@@ -49,7 +49,7 @@ function App() {
    return (
       <div className="App">
          <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange}/>
-         <ListPortfolio portfolioValues={porfolioValues}/>
+         <ListPortfolio portfolioValues={porfolioValues} deleteFromPortfolio={deleteFromPortfolio}/>
          <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate}/>
          {serverError && <div>Unable to connect to API</div>}
       </div>
