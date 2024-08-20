@@ -25,6 +25,14 @@ function App() {
       console.log(porfolioValues)
    };
 
+   const deleteFromPortfolio = (e: any) => {
+      e.preventDefault();
+      const portfolioUpdatedValues = porfolioValues.filter((value) =>{
+         return value !== e.target[0].value;
+      });
+      setPortfolioValues(portfolioUpdatedValues)
+   }
+
    const onSearchSubmit = async (e: SyntheticEvent) => {
       e.preventDefault();
       const result = await searchCompanies(search);
