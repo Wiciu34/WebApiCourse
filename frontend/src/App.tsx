@@ -4,6 +4,7 @@ import CardList from "./Components/CardList/CardList";
 import Search from "./Components/Search/Search";
 import { CompanySearch } from "./company";
 import { searchCompanies } from "./api";
+import ListPortfolio from "./Components/Portfolio/ListPortfolio/ListPortfolio";
 
 function App() {
    const [search, setSearch] = useState<string>("");
@@ -19,7 +20,7 @@ function App() {
       e.preventDefault();
       const exists = porfolioValues.find((value) => value === e.target[0].value)
       if (exists) return;
-      const portfolioUpdatedValues =[... porfolioValues, e.target[0].value];
+      const portfolioUpdatedValues = [... porfolioValues, e.target[0].value];
       setPortfolioValues(portfolioUpdatedValues);
       console.log(porfolioValues)
    };
@@ -40,6 +41,7 @@ function App() {
    return (
       <div className="App">
          <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange}/>
+         <ListPortfolio portfolioValues={porfolioValues}/>
          <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate}/>
          {serverError && <div>Unable to connect to API</div>}
       </div>
