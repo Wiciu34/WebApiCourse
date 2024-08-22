@@ -1,4 +1,5 @@
 import React from 'react'
+import { Outlet } from 'react-router';
 
 interface Props {}
 
@@ -81,6 +82,7 @@ const CompanyDashboard = (props: Props) => {
                        </div>
                     </div>
                  </div>
+                 <div className='flex flex-wrap'>{<Outlet/>}</div>
               </div>
            </div>
         </div>
