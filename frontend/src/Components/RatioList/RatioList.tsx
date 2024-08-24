@@ -2,22 +2,13 @@ import React from 'react'
 import { TestDataCompany } from '../Table/tableTestData'
 import { render } from '@testing-library/react'
 
-type Props = {}
+type Props = {
+    config: any;
+    data: any
+}
 
-const data = TestDataCompany[0]
-
-const config = [
-    {
-        label: "Company name",
-        render: (company: (typeof data)) =>{
-            return company.companyName;
-        },
-        subTitle: "This is company name!" 
-    }
-]
-
-const RatioList = (props: Props) => {
-    const renderedRow = config.map(row => {
+const RatioList = ({config, data}: Props) => {
+    const renderedRow = config.map((row: any) => {
         return (
             <li className='py-3 sm:py-4'>
                 <div className="flex items-center space-x-4">
