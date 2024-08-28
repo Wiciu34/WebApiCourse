@@ -28,7 +28,7 @@ const Table = ({config, data}: Props) => {
     })
         
   return (
-     <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8">
+     <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 m-4">
         <table>
            <thead className="min-w-full divide-y divide=gray-200 m-5">
               <tr>{renderedHeaders}</tr>
