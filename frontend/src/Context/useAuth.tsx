@@ -39,8 +39,8 @@ export const UserProvider = ({ children }: Props) => {
    }, []);
 
    const registerUser = async (
-      username: string,
       email: string,
+      username: string,
       password: string
    ) => {
       await registerApi(username, password, email)
