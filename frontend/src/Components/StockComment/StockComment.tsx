@@ -7,7 +7,7 @@ type Props = {
 
 const StockComment = ({stockSymbol}: Props) => {
   return (
-    <StockCommentForm/>
+    <StockCommentForm symbol={stockSymbol}/>
   )
 }
 
