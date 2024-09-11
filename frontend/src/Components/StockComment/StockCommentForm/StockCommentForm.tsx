@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 
 type Props = {
    symbol: string;
+   handleStockComment: (e: StockCommnetFormInputs) => void;
 };
 
 type StockCommnetFormInputs = {
@@ -17,17 +18,17 @@ const validation = Yup.object().shape({
    content: Yup.string().required("content is required"),
 });
 
-const StockCommentForm = ({ symbol }: Props) => {
+const StockCommentForm = ({ symbol, handleStockComment }: Props) => {
    const {
       register,
       handleSubmit,
       formState: { errors },
    } = useForm<StockCommnetFormInputs>({ resolver: yupResolver(validation) });
 
-   
+
 
    return (
-      <form className="mt-4 ml-4">
+      <form className="mt-4 ml-4" onSubmit={handleSubmit(handleStockComment)}>
          <input
             type="text"
             id="title"
